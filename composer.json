@@ -1,0 +1,30 @@
+{
+  "name": "agenda/application",
+  "type": "application",
+  "description": "Agenda de Contatos",
+  "authors": [
+    {
+      "name": "Edson Melo de Souza",
+      "email": "email@email.com.br"
+    }
+  ],
+  "homepage": "https://www.emsapi.esy.es/agenda/",
+  "config": {
+    "platform": {
+      "php": "7.4"
+    },
+    "platform-check": false
+  },
+  "support": {
+    "issues": "https://github.com/EdsonMSouza/php-agenda"
+  },
+  "autoload": {
+    "psr-4": {
+      "Agenda\\": "src/"
+    }
+  },
+  "require": {
+    "ext-json": "*",
+    "ext-pdo": "*"
+  }
+}
