@@ -30,9 +30,10 @@ class ContatoModel
     {
         try {
             self::$pdo->beginTransaction();
-            $sql = "INSERT INTO contatos (contatos.nome, contatos.email, contatos.telefone)
+            $sql = "INSERT INTO contatos (contatos.usuario_id, contatos.nome, contatos.email, contatos.telefone)
                     VALUES (:nome, :email, :telefone)";
             $stmt = self::$pdo->prepare($sql);
+            $stmt->bindValue(':nome' , $contato->get("usuario_id"));
             $stmt->bindValue(':nome' , $contato->get("nome"));
             $stmt->bindValue(':email' , $contato->get("email"));
             $stmt->bindValue(':telefone' , $contato->get("telefone"));

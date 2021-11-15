@@ -3,7 +3,9 @@
 namespace Agenda\Usuario;
 
 use Agenda\Database\Database;
+use PDO;
 use PDOException;
+
 
 /**
  * CRUD para o Usuario
@@ -47,14 +49,21 @@ class UsuarioModel
         }
     }
 
-    public function pesquisar(Usuario $usuario)
+    public function login(Usuario $usuario): array
     {
         try {
-            if($usuario->get("id") != 0) {
-                echo "Busca pelo ID";
+            $sql = "SELECT id, nome FROM usuarios WHERE usuario = :usuario AND senha = :senha";
+            $stmt = self::$pdo->prepare($sql);
+            $stmt->bindValue(':usuario' , md5($usuario->get("usuario")));
+            $stmt->bindValue(':senha' , md5($usuario->get("senha")));
+            $stmt->execute();
+
+            if($stmt->rowCount() == 1) {
+                return [true , $stmt->fetch(PDO::FETCH_ASSOC)];
             } else {
-                echo "Busca TODOS";
+                return [false];
             }
+
         } catch (PDOException $ex) {
             throw $ex;
         }
