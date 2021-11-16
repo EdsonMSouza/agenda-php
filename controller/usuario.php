@@ -3,7 +3,6 @@
 namespace Agenda;
 session_start();
 
-
 if(!isset($_POST['opcao'])) {
     header('Location: ../index.php');
 }
@@ -35,8 +34,21 @@ switch ($_POST['opcao']) {
             echo "ERRO: " . $pdo->getMessage();
         }
         break;
-    case 'novo':
+
+    case 'atualizar':
+        try {
+            $usuario->set("id" , $_SESSION['navegacao'][0]['id']);
+            $usuario->set("nome" , $_POST['nome']);
+            $usuario->set("usuario" , $_POST['usuario']);
+            $usuario->set("senha" , $_POST['senha']);
+            $usuario_model->atualizar($usuario);
+            $_SESSION['mensagem'] = 'Dados alterados com sucesso.';
+            header('Location: ../views/main.php');
+
+        } catch (PDOException $pdo) {
+            echo "ERRO: " . $pdo->getMessage();
+        }
         break;
-    case 'recuperar_senha':
+    case 'novo':
         break;
 }

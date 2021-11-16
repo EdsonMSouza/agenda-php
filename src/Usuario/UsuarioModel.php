@@ -69,40 +69,39 @@ class UsuarioModel
         }
     }
 
-    public function atualizar(Contato $contato)
+    public function editar(Usuario $usuario)
     {
         try {
-            self::$pdo->beginTransaction();
-
-            $sql = "UPDATE contatos SET 
-                    contatos.nome = :nome,
-                    contatos.usuario = :usuario , 
-                    contatos.senha = :senha 
-                    WHERE contatos.id = :id";
-
+            $sql = "SELECT * FROM usuarios WHERE id = :id";
             $stmt = self::$pdo->prepare($sql);
-            $stmt->bindValue(':nome' , $contato->get("nome"));
-            $stmt->bindValue(':usuario' , $contato->get("usuario"));
-            $stmt->bindValue(':senha' , $contato->get("senha"));
-            $stmt->bindValue(':id' , $contato->get("id"));
+            $stmt->bindValue(':id' , $usuario->get("id"));
             $stmt->execute();
-            self::$pdo->commit();
 
-            return true;
+            if($stmt->rowCount() == 1) {
+                return $stmt->fetch(PDO::FETCH_ASSOC);
+            }
 
         } catch (PDOException $ex) {
-            self::$pdo->rollback();
             throw $ex;
         }
     }
 
-    public function excluir(Contato $contato)
+    public function atualizar(Usuario $usuario)
     {
         try {
             self::$pdo->beginTransaction();
-            $sql = "DELETE FROM contatos WHERE contatos.id = :id";
+
+            $sql = "UPDATE usuarios SET  
+                    usuarios.nome = :nome,
+                    usuarios.usuario = :usuario , 
+                    usuarios.senha = :senha 
+                    WHERE usuarios.id = :id";
+
             $stmt = self::$pdo->prepare($sql);
-            $stmt->bindValue(':id' , $contato->get("id"));
+            $stmt->bindValue(':nome' , $usuario->get("nome"));
+            $stmt->bindValue(':usuario' , md5($usuario->get("usuario")));
+            $stmt->bindValue(':senha' , md5($usuario->get("senha")));
+            $stmt->bindValue(':id' , $usuario->get("id"));
             $stmt->execute();
             self::$pdo->commit();
 

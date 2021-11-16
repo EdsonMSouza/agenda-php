@@ -100,7 +100,6 @@ require 'vendor/autoload.php';
             <input type="hidden" name="opcao" value="login">
         </form>
     </div>
-    </div>
 </main>
 
 <footer class="footer mt-auto py-3 bg-light">

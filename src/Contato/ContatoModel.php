@@ -4,6 +4,7 @@ namespace Agenda\Contato;
 
 use Agenda\Database\Database;
 use PDOException;
+use PDO;
 
 /**
  * CRUD para o Contato
@@ -31,9 +32,9 @@ class ContatoModel
         try {
             self::$pdo->beginTransaction();
             $sql = "INSERT INTO contatos (contatos.usuario_id, contatos.nome, contatos.email, contatos.telefone)
-                    VALUES (:nome, :email, :telefone)";
+                    VALUES (:usuario_id, :nome, :email, :telefone)";
             $stmt = self::$pdo->prepare($sql);
-            $stmt->bindValue(':nome' , $contato->get("usuario_id"));
+            $stmt->bindValue(':usuario_id' , $contato->get("usuario_id"));
             $stmt->bindValue(':nome' , $contato->get("nome"));
             $stmt->bindValue(':email' , $contato->get("email"));
             $stmt->bindValue(':telefone' , $contato->get("telefone"));
@@ -60,6 +61,24 @@ class ContatoModel
                 echo "Busca TODOS";
             }
         } catch (PDOException $ex) {
+            throw $ex;
+        }
+    }
+
+    /**
+     * @param Contato $contato
+     */
+    public function listar()
+    {
+        try {
+            $sql = "SELECT * FROM contatos ORDER BY nome";
+            $stmt = self::$pdo->prepare($sql);
+            $stmt->execute();
+
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        } catch (PDOException $ex) {
+            self::$pdo->rollback();
             throw $ex;
         }
     }
