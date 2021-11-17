@@ -5,7 +5,9 @@
 
 Pequeno projeto de uma agenda mostrando recursos do PHP como o uso de `SESSIONS`, biblioteca `PDO` para acesso a dados e uso de `POO` (Programação Orientada a Objetos).
 
-É importante destacar que alguns recursos não estão implementados. Desta forma, fica a orientação para implementá-los como estudo.
+É importante destacar que alguns recursos não estão implementados, bem como não tem o objetivo de utilizar técnicas avançadas de programação em PHP.
+
+Desta forma, fica a recomendação para implementar os recursos ausentes para fins de estudo.
 
 # VERSÃO PHP
 ```html
