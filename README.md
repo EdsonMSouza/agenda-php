@@ -3,17 +3,45 @@
 <code><img height="50" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/php/php.png"></code>
 <code><img height="50" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/mysql/mysql.png"></code>
 
-Pequeno projeto de uma agenda mostrando recursos do PHP como o uso de SESSIONS`, biblioteca `PDO` e uso de `POO` -
-Programação Orientada a Objetos.
+Pequeno projeto de uma agenda mostrando recursos do PHP como o uso de `SESSIONS`, biblioteca `PDO` para acesso a dados e uso de `POO` (Programação Orientada a Objetos).
 
 É importante destacar que alguns recursos não estão implementados. Desta forma, fica a orientação para implementá-los como estudo.
 
+# VERSÃO PHP
 ```html
 PHP 7.4.3 (cli) (built: Jul  5 2021 15:13:35) ( NTS )
 Copyright (c) The PHP Group Zend Engine v3.4.0,
 Copyright (c) Zend Technologies with Zend OPcache v7.4.3,
 Copyright (c), by Zend Technologies
 ```
+
+### Scripts SQL
+
+```sql
+CREATE DATABASE name;
+```
+
+```sql
+CREATE TABLE usuarios
+(
+    id       INT(3)         NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    nome     VARCHAR(50)    NOT NULL,
+    usuario  VARCHAR(32)    NOT NULL,
+    senha    VARCHAR(32)    NOT NULL
+);
+```
+
+```sql
+CREATE TABLE contatos
+(
+    id           INT(3)         NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    usuario_id   INT(3)         NOT NULL,
+    nome         VARCHAR(50)    NOT NULL,
+    email        VARCHAR(50)    NOT NULL,
+    telefone     VARCHAR(20)    NOT NULL
+);
+```
+
 ## Composer
 
 As alterações em classes deverão ser atualizadas utilizando o comando <code>composer dump-autoload -o</code> na sua máquina local.
