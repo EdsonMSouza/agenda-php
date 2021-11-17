@@ -50,5 +50,16 @@ switch ($_POST['opcao']) {
         }
         break;
     case 'novo':
+        try {
+            $usuario->set("nome" , $_POST['nome']);
+            $usuario->set("usuario" , $_POST['usuario']);
+            $usuario->set("senha" , $_POST['senha']);
+            $usuario_model->novo($usuario);
+            $_SESSION['novo'] = 'Usuário incluído com sucesso.';
+            header('Location: ../index.php');
+
+        } catch (PDOException $pdo) {
+            echo "ERRO: " . $pdo->getMessage();
+        }
         break;
 }

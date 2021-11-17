@@ -68,17 +68,17 @@ class ContatoModel
     /**
      * @param Contato $contato
      */
-    public function listar()
+    public function listar(Contato $contato)
     {
         try {
-            $sql = "SELECT * FROM contatos ORDER BY nome";
+            $sql = "SELECT * FROM contatos WHERE usuario_id = :usuario_id ORDER BY nome";
             $stmt = self::$pdo->prepare($sql);
+            $stmt->bindValue(':usuario_id' , $contato->get("usuario_id"));
             $stmt->execute();
 
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         } catch (PDOException $ex) {
-            self::$pdo->rollback();
             throw $ex;
         }
     }

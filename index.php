@@ -82,6 +82,17 @@ require 'vendor/autoload.php';
                     </p>
                 </div>
             </div>
+            <div clas="row">
+                <div class="col-md-3 mb-3">
+                    <p class="text-success">
+                        <?php
+                        if(isset($_SESSION['novo'])) {
+                            echo $_SESSION['novo'];
+                        }
+                        ?>
+                    </p>
+                </div>
+            </div>
 
             <div class="row">
                 <div class="col-md-3 mb-3">
@@ -93,7 +104,7 @@ require 'vendor/autoload.php';
                 <div class="col-md-3 mb-3">
                     <div class="d-flex justify-content-between align-items-center">
                         <a href="#!" class="text-body">Esqueci a senha</a>
-                        <a href="#!" class="text-body">Novo usuário</a>
+                        <a href="views/novo_usuario.php" class="text-body">Novo usuário</a>
                     </div>
                 </div>
             </div>

@@ -1,16 +1,19 @@
 <?php
 
 namespace Agenda;
-//ini_set('display_errors', 1);
-//ini_set('display_startup_errors', 1);
-//error_reporting(E_ALL);
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 include 'topo.php';
 
+use Agenda\Contato\Contato;
 use Agenda\Contato\ContatoModel;
 
+$contato = new Contato();
+$contato->set("usuario_id", $_SESSION['navegacao'][0]['id']);
 $contato_model = new ContatoModel();
-$dados = $contato_model->listar();
+$dados = $contato_model->listar($contato);
 ?>
     <main class="flex-shrink-0">
         <div class="container">

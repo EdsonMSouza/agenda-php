@@ -13,8 +13,8 @@ class Database
     private static $db_type = 'mysql';
     private static $db_hostname = 'localhost';
     private static $db_name = 'agenda';
-    private static $db_user = 'admin';
-    private static $db_password = 'admin';
+    private static $db_user = '';
+    private static $db_password = '';
 
     # Constructor
     /**
