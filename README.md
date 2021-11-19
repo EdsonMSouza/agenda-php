@@ -8,7 +8,7 @@ Pequeno projeto de uma agenda mostrando recursos do PHP como o uso de `SESSIONS`
 É importante destacar que alguns recursos não estão implementados, bem como não tem o objetivo de utilizar técnicas avançadas de programação em PHP.
 
 Desta forma, fica a recomendação para implementar os recursos ausentes para fins de estudo.
-
+ 
 # VERSÃO PHP
 ```html
 PHP 7.4.3 (cli) (built: Jul  5 2021 15:13:35) ( NTS )
