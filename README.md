@@ -51,7 +51,7 @@ As alterações em classes deverão ser atualizadas utilizando o comando <code>c
 ## Como citar este conteúdo
 
 ```
-DE SOUZA, Edson Melo (2021, August 16). PHP API TO-DO-LIST v.2.0.
+DE SOUZA, Edson Melo (2021, November 16). Agenda PHP.
 Available in: https://github.com/EdsonMSouza/agenda-php
 ```
 
@@ -60,10 +60,10 @@ Ou BibTeX para LaTeX:
 ```latex
 @misc{desouza2020phpapi,
   author = {DE SOUZA, Edson Melo},
-  title = {PHP API TO-DO-LIST v.2.0},
+  title = {Agenda PHP},
   url = {https://github.com/EdsonMSouza/agenda-php},
   year = {2021},
-  month = {August}
+  month = {November}
 }
 ```
 
